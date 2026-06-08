@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EcoSmart Carbon Platform</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>EcoSmart Carbon Footprint Awareness Platform</h1>
+
+<form method="POST">
+
+<input type="number" name="car_km" placeholder="Monthly Car KM" required>
+
+<input type="number" name="electricity" placeholder="Electricity Usage (kWh)" required>
+
+<input type="number" name="flights" placeholder="Flights Per Year" required>
+
+<select name="diet">
+<option value="vegan">Vegan</option>
+<option value="vegetarian">Vegetarian</option>
+<option value="mixed">Mixed</option>
+<option value="nonveg">Non Vegetarian</option>
+</select>
+
+<button type="submit">
+Calculate
+</button>
+
+</form>
+
+{% if result %}
+
+<h2>Your Estimated Carbon Footprint:</h2>
+
+<h3>{{ result }} kg CO₂</h3>
+
+<h2>Recommendations</h2>
+
+<ul>
+{% for item in recommendations %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+</body>
+</html>
